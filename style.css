@@ -8,13 +8,17 @@ body {
 .container {
     box-sizing: border-box;
     width: 500px;
-    height: 300px;
     margin-top: 100px;
     margin-bottom: 100px;
     padding: 20px;
     border-style: groove;
     border-color: black;
     border-radius: 5%;
+    font-size: 18px;
+}
+
+#set {
+    height: 300px;
 }
 
 h1 {
@@ -60,14 +64,15 @@ h3 {
     padding: 5px;
 }
 
-.timer {
+#timer {
     float: right;
     color: red;
     font-size: 25px;
     font-weight: 700;
-    margin-right: 18px;
+    margin-left: 75%;
 }
 
 #answer-btn {
     margin: 5px;
+    text-align: left;
 }
