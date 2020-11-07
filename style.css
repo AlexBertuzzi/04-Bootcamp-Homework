@@ -27,7 +27,7 @@ h1 {
 }
 
 #button {
-    margin: 5px;
+    margin: 10px;
 }
 
 #nav {
@@ -75,4 +75,13 @@ h3 {
 #answer-btn {
     margin: 5px;
     text-align: left;
+}
+
+#initials {
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+}
+#save-button {
+    margin: 10px;
 }

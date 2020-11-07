@@ -4,6 +4,9 @@ var secondsElapsed = 0;
 var interval;
 var secondsLeft ="";
 var answerClicksCount = 0;
+var scoreDisplay = document.querySelector("#score")
+var yourScore = localStorage.getItem("yourScore");
+var score = 0;
 
     function startTimer() {
         if (secondsElapsed < 100) {
@@ -12,12 +15,17 @@ var answerClicksCount = 0;
                 secondsLeft = (totalSeconds - secondsElapsed);         
                 secondsDisplay.textContent = secondsLeft;
                 if (secondsElapsed == 100) {
-                    clearInterval(interval);
+                    clearInterval(interval)
+                    score = secondsLeft
+                    return window.location.assign("highscores.html")
                 }
                 if (answerClicksCount == 6) {
-                    clearInterval(interval);
+                    clearInterval(interval)
+                    score = secondsLeft
+                    return window.location.assign("highscores.html")
                 }
-                console.log(secondsLeft)
+                localStorage.setItem("yourScore", score);
+                scoreDisplay.textContent = yourScore;
             }, 1000);
         };
     }
@@ -100,5 +108,11 @@ var currentQuestion = {};
         });
     });
 
+var initials = document.querySelector("#initials");
+var saveBtn = document.querySelector("#save-button");
+
+    function saveScore(event){
+        event.preventDefault();
+    }
 
 
