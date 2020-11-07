@@ -28,63 +28,73 @@ var questionObjects = [
     answer1: "answer1 text",
     answer2: "answer2 text", 
     answer3: "answer3 text", 
-    answer4: "answer4 text"
+    answer4: "answer4 text",
+    correctAnswer: 2,
     },
     {questionText: "question2 text",
     answer1: "answer1 text",
     answer2: "answer2 text", 
     answer3: "answer3 text", 
-    answer4: "answer4 text"
+    answer4: "answer4 text",
+    correctAnswer: 4,
     }, 
     {questionText: "question3 text",
     answer1: "answer1 text",
     answer2: "answer2 text", 
     answer3: "answer3 text", 
-    answer4: "answer4 text"
+    answer4: "answer4 text",
+    correctAnswer: 3,
     }, 
     {questionText: "question4 text",
     answer1: "answer1 text",
     answer2: "answer2 text", 
     answer3: "answer3 text", 
-    answer4: "answer4 text"
+    answer4: "answer4 text",
+    correctAnswer: 4,
     }, 
     {questionText: "question5 text",
     answer1: "answer1 text",
     answer2: "answer2 text", 
     answer3: "answer3 text", 
-    answer4: "answer4 text"
+    answer4: "answer4 text",
+    correctAnswer: 1,
     }, 
     {questionText: "question6 text",
     answer1: "answer1 text",
     answer2: "answer2 text", 
     answer3: "answer3 text", 
-    answer4: "answer4 text"
+    answer4: "answer4 text",
+    correctAnswer: 3,
     }
 ]
 
 var question = document.querySelector(".question");
 var answers = Array.from(document.querySelectorAll("#answer-btn"));
 var currentQuestion = {};
-var questionList = [...questionObjects];
 
     function setQuestion(){
-        var i = Math.floor(Math.random() * questionList.length);
-            currentQuestion = questionList[i];
+        var i = Math.floor(Math.random() * questionObjects.length);
+            currentQuestion = questionObjects[i];
             question.textContent = currentQuestion.questionText;
-            questionList.splice(i,1);
+            answers[0].textContent = currentQuestion.answer1;
+            answers[1].textContent = currentQuestion.answer2;
+            answers[2].textContent = currentQuestion.answer3;
+            answers[3].textContent = currentQuestion.answer4;
+
+            questionObjects.splice(i,1);
         
-        answers.forEach(answer => {
-            var number = answer.dataset["number"];
-            answer.textContent = currentQuestion["answer" + number];
-        });
     }
     setQuestion();
 
-    answers.forEach(answer => {
-        answer.addEventListener("click", e => {
-            var clickedAnswers = e.target;
-            var clickedAnswer = clickedAnswers.dataset["number"];
+    answers.forEach(function(answer) {
+        answer.addEventListener("click", function(event) {
+            var clickedAnswer = event.target;
+            clickedAnswer = clickedAnswer.dataset["number"];
             console.log(clickedAnswer);
+            console.log(clickedAnswer == currentQuestion.correctAnswer)
+            if (clickedAnswer != currentQuestion.correctAnswer){
+                secondsElapsed = secondsElapsed +10;
+            }
             answerClicksCount += 1;
             setQuestion();
         });
